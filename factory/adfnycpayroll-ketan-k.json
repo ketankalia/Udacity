@@ -1,0 +1,16 @@
+{
+	"name": "adfnycpayroll-ketan-k",
+	"properties": {
+		"globalConfigurations": {
+			"factoryStagingLSReferenceName": "ls_storageac",
+			"factoryStagingLSType": "LinkedServiceReference",
+			"factoryStagingFolderPath": "container-ketan-k/dirstaging"
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e81a832b-c727-4bc0-bad4-3ab7b2a6deea",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}
