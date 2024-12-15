@@ -1,0 +1,91 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfnycpayroll-ketan-k"
+		},
+		"ls_sqlserver_nycpayroll_ketan_k_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_sqlserver_nycpayroll_ketan_k'"
+		},
+		"ls_storageac_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_storageac'"
+		},
+		"ls_synapse_nycpayroll_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'ls_synapse_nycpayroll'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synapsenycpayroll-ketan-k-ondemand.sql.azuresynapse.net;Initial Catalog=udacity"
+		},
+		"ls_storageac_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsnycpayrollketank.dfs.core.windows.net/"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfnycpayroll-ketan-k_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_sqlserver_nycpayroll_ketan_k_connectionString": {
+						"value": "[parameters('ls_sqlserver_nycpayroll_ketan_k_connectionString')]"
+					},
+					"ls_storageac_accountKey": {
+						"value": "[parameters('ls_storageac_accountKey')]"
+					},
+					"ls_synapse_nycpayroll_connectionString": {
+						"value": "[parameters('ls_synapse_nycpayroll_connectionString')]"
+					},
+					"ls_storageac_properties_typeProperties_url": {
+						"value": "[parameters('ls_storageac_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adfnycpayroll-ketan-k_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adfnycpayroll-ketan-k_ArmTemplate_0')]"
+			]
+		}
+	]
+}
