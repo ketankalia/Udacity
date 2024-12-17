@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_sqlser_NYC_Payroll_Data_2020",
+						"referenceName": "ds_sqlser_nyc_payroll_data_2020",
 						"type": "DatasetReference"
 					},
 					"name": "Payroll2020FromSql"
