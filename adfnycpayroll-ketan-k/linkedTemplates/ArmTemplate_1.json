@@ -22,30 +22,23 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_Data_2020",
+								"referenceName": "ds_sqlser_nyc_payroll_data_2020",
 								"type": "DatasetReference"
 							},
 							"name": "Payroll2020FromSql"
-						},
-						{
-							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_Data_2021",
-								"type": "DatasetReference"
-							},
-							"name": "Payroll2021fromSql"
 						}
 					],
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_Summary",
+								"referenceName": "ds_sqlser_nyc_payroll_summary",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
 						},
 						{
 							"dataset": {
-								"referenceName": "dsStorageStaging",
+								"referenceName": "dsstoragestaging",
 								"type": "DatasetReference"
 							},
 							"name": "StorageStagingSink"
@@ -94,32 +87,7 @@
 						"     validateSchema: false,",
 						"     isolationLevel: 'READ_UNCOMMITTED',",
 						"     format: 'table') ~> Payroll2020FromSql",
-						"source(output(",
-						"          FiscalYear as integer,",
-						"          PayrollNumber as integer,",
-						"          AgencyCode as string,",
-						"          AgencyName as string,",
-						"          EmployeeID as string,",
-						"          LastName as string,",
-						"          FirstName as string,",
-						"          AgencyStartDate as date,",
-						"          WorkLocationBorough as string,",
-						"          TitleCode as string,",
-						"          TitleDescription as string,",
-						"          LeaveStatusasofJune30 as string,",
-						"          BaseSalary as double,",
-						"          PayBasis as string,",
-						"          RegularHours as double,",
-						"          RegularGrossPaid as double,",
-						"          OTHours as double,",
-						"          TotalOTPaid as double,",
-						"          TotalOtherPay as double",
-						"     ),",
-						"     allowSchemaDrift: true,",
-						"     validateSchema: false,",
-						"     isolationLevel: 'READ_UNCOMMITTED',",
-						"     format: 'table') ~> Payroll2021fromSql",
-						"Payroll2020FromSql, Payroll2021fromSql union(byName: true)~> PayrollDataCombined",
+						"Payroll2020FromSql union(byName: true)~> PayrollDataCombined",
 						"PayrollDataCombined filter(toInteger(FiscalYear) >= $dataflow_param_fiscalyear) ~> filter1",
 						"filter1 derive(TotalPaid = RegularGrossPaid + TotalOTPaid+TotalOtherPay) ~> derivedColumnTotalPaid",
 						"derivedColumnTotalPaid aggregate(groupBy(AgencyName,",
@@ -165,7 +133,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_TitleMaster",
+								"referenceName": "ds_file_storage_titlemaster",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -174,7 +142,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_TITLE_MD",
+								"referenceName": "ds_sqlser_nyc_payroll_title_md",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -436,7 +404,6 @@
 								},
 								"datasetParameters": {
 									"Payroll2020FromSql": {},
-									"Payroll2021fromSql": {},
 									"sink1": {},
 									"StorageStagingSink": {}
 								}
@@ -459,6 +426,36 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/dataflows/df_titlemaster')]",
 				"[concat(variables('factoryId'), '/dataflows/df_sql_payroll2020_agg')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/trigger1')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "pipeline_all",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Minute",
+						"interval": 15,
+						"startTime": "2024-12-16T20:02:00",
+						"timeZone": "Eastern Standard Time"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/pipeline_all')]"
 			]
 		}
 	]

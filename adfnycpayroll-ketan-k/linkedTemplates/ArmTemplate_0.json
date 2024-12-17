@@ -73,35 +73,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/dsStorageStaging')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_storageac",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"folderPath": "dirstaging",
-						"fileSystem": "container-ketan-k"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_storageac')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_AgencyMaster')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_agencymaster')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -139,7 +111,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_EmpMaster')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_empmaster')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -181,151 +153,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_TitleMaster')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_storageac",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "TitleMaster.csv",
-						"folderPath": "dirpayrollfiles",
-						"fileSystem": "container-ketan-k"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "TitleCode",
-						"type": "String"
-					},
-					{
-						"name": "TitleDescription",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_storageac')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_storageac",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileName": "nycpayroll_2021.csv",
-						"folderPath": "dirpayrollfiles",
-						"fileSystem": "container-ketan-k"
-					},
-					"columnDelimiter": ",",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": [
-					{
-						"name": "FiscalYear",
-						"type": "String"
-					},
-					{
-						"name": "PayrollNumber",
-						"type": "String"
-					},
-					{
-						"name": "AgencyCode",
-						"type": "String"
-					},
-					{
-						"name": "AgencyName",
-						"type": "String"
-					},
-					{
-						"name": "EmployeeID",
-						"type": "String"
-					},
-					{
-						"name": "LastName",
-						"type": "String"
-					},
-					{
-						"name": "FirstName",
-						"type": "String"
-					},
-					{
-						"name": "AgencyStartDate",
-						"type": "String"
-					},
-					{
-						"name": "WorkLocationBorough",
-						"type": "String"
-					},
-					{
-						"name": "TitleCode",
-						"type": "String"
-					},
-					{
-						"name": "TitleDescription",
-						"type": "String"
-					},
-					{
-						"name": "LeaveStatusasofJune30",
-						"type": "String"
-					},
-					{
-						"name": "BaseSalary",
-						"type": "String"
-					},
-					{
-						"name": "PayBasis",
-						"type": "String"
-					},
-					{
-						"name": "RegularHours",
-						"type": "String"
-					},
-					{
-						"name": "RegularGrossPaid",
-						"type": "String"
-					},
-					{
-						"name": "OTHours",
-						"type": "String"
-					},
-					{
-						"name": "TotalOTPaid",
-						"type": "String"
-					},
-					{
-						"name": "TotalOtherPay",
-						"type": "String"
-					}
-				]
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_storageac')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll2020')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll_2020')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -431,7 +259,151 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_NYC_Payroll_AGENCY_MD')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll_2021')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_storageac",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "nycpayroll_2021.csv",
+						"folderPath": "dirpayrollfiles",
+						"fileSystem": "container-ketan-k"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "FiscalYear",
+						"type": "String"
+					},
+					{
+						"name": "PayrollNumber",
+						"type": "String"
+					},
+					{
+						"name": "AgencyCode",
+						"type": "String"
+					},
+					{
+						"name": "AgencyName",
+						"type": "String"
+					},
+					{
+						"name": "EmployeeID",
+						"type": "String"
+					},
+					{
+						"name": "LastName",
+						"type": "String"
+					},
+					{
+						"name": "FirstName",
+						"type": "String"
+					},
+					{
+						"name": "AgencyStartDate",
+						"type": "String"
+					},
+					{
+						"name": "WorkLocationBorough",
+						"type": "String"
+					},
+					{
+						"name": "TitleCode",
+						"type": "String"
+					},
+					{
+						"name": "TitleDescription",
+						"type": "String"
+					},
+					{
+						"name": "LeaveStatusasofJune30",
+						"type": "String"
+					},
+					{
+						"name": "BaseSalary",
+						"type": "String"
+					},
+					{
+						"name": "PayBasis",
+						"type": "String"
+					},
+					{
+						"name": "RegularHours",
+						"type": "String"
+					},
+					{
+						"name": "RegularGrossPaid",
+						"type": "String"
+					},
+					{
+						"name": "OTHours",
+						"type": "String"
+					},
+					{
+						"name": "TotalOTPaid",
+						"type": "String"
+					},
+					{
+						"name": "TotalOtherPay",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_storageac')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_titlemaster')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_storageac",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"fileName": "TitleMaster.csv",
+						"folderPath": "dirpayrollfiles",
+						"fileSystem": "container-ketan-k"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": [
+					{
+						"name": "TitleCode",
+						"type": "String"
+					},
+					{
+						"name": "TitleDescription",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_storageac')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_agency_md')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -461,7 +433,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_NYC_Payroll_Data_2020')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_data_2020')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -567,7 +539,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_NYC_Payroll_Data_2021')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_data_2021')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -673,7 +645,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_NYC_Payroll_EMP_MD')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_emp_md')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -707,7 +679,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_NYC_Payroll_Summary')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_summary')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -743,7 +715,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_NYC_Payroll_TITLE_MD')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_title_md')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -794,6 +766,34 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/dsstoragestaging')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_storageac",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "dirstaging",
+						"fileSystem": "container-ketan-k"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_storageac')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/df_agencymaster')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -803,7 +803,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_AgencyMaster",
+								"referenceName": "ds_file_storage_agencymaster",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -812,7 +812,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_AGENCY_MD",
+								"referenceName": "ds_sqlser_nyc_payroll_agency_md",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -845,8 +845,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_AgencyMaster')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_NYC_Payroll_AGENCY_MD')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_agencymaster')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_agency_md')]"
 			]
 		},
 		{
@@ -859,7 +859,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_EmpMaster",
+								"referenceName": "ds_file_storage_empmaster",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -868,7 +868,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_EMP_MD",
+								"referenceName": "ds_sqlser_nyc_payroll_emp_md",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -903,8 +903,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_EmpMaster')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_NYC_Payroll_EMP_MD')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_empmaster')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_emp_md')]"
 			]
 		},
 		{
@@ -917,7 +917,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_nycpayroll2020",
+								"referenceName": "ds_file_storage_nycpayroll_2020",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -926,7 +926,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_Data_2020",
+								"referenceName": "ds_sqlser_nyc_payroll_data_2020",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -993,8 +993,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll2020')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_NYC_Payroll_Data_2020')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll_2020')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_data_2020')]"
 			]
 		},
 		{
@@ -1007,7 +1007,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_nycpayroll",
+								"referenceName": "ds_file_storage_nycpayroll_2021",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -1016,7 +1016,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_NYC_Payroll_Data_2021",
+								"referenceName": "ds_sqlser_nyc_payroll_data_2021",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -1083,8 +1083,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_NYC_Payroll_Data_2021')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll_2021')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_data_2021')]"
 			]
 		}
 	]
