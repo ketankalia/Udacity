@@ -19,9 +19,6 @@
 						"referenceName": "df_agencymaster",
 						"type": "DataFlowReference"
 					},
-					"staging": {
-						"folderPath": ""
-					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
@@ -187,6 +184,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_sql_payroll2020_agg",
@@ -203,6 +201,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"dataflow_param_fiscalyear": {
+				"type": "int"
+			}
+		},
 		"annotations": [],
 		"lastPublishTime": "2024-12-15T16:08:46Z"
 	},
