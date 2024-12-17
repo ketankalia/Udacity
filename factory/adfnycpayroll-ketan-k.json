@@ -1,5 +1,11 @@
 {
 	"name": "adfnycpayroll-ketan-k",
+	"properties": {
+		"globalConfigurations": {
+			"factoryStagingLSReferenceName": "ls_storageac",
+			"factoryStagingLSType": "LinkedServiceReference"
+		}
+	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
