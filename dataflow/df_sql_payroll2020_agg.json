@@ -22,7 +22,7 @@
 				},
 				{
 					"dataset": {
-						"referenceName": "dsStorageStaging",
+						"referenceName": "dsstoragestaging",
 						"type": "DatasetReference"
 					},
 					"name": "StorageStagingSink"
