@@ -19,6 +19,9 @@
 						"referenceName": "df_agencymaster",
 						"type": "DataFlowReference"
 					},
+					"staging": {
+						"folderPath": ""
+					},
 					"compute": {
 						"coreCount": 8,
 						"computeType": "General"
@@ -184,7 +187,6 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
-				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "df_sql_payroll2020_agg",
