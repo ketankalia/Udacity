@@ -1,5 +1,5 @@
 {
-	"name": "ds_file_storage_EmpMaster",
+	"name": "ds_file_storage_empmaster",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_storageac",
