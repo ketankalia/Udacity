@@ -1,6 +1,12 @@
 {
 	"name": "adfnycpayroll-ketan-k",
 	"properties": {
+		"globalParameters": {
+			"dataflow_param_fiscalyear": {
+				"type": "int",
+				"value": 2020
+			}
+		},
 		"globalConfigurations": {
 			"factoryStagingLSReferenceName": "ls_storageac",
 			"factoryStagingLSType": "LinkedServiceReference"
