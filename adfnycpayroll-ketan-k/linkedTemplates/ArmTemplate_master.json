@@ -17,7 +17,7 @@
 		},
 		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_server": {
 			"type": "string",
-			"defaultValue": "tcp:sqlser-ketan-k.database.windows.net,1433"
+			"defaultValue": "sqlser-ketan-k.database.windows.net"
 		},
 		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_database": {
 			"type": "string",
