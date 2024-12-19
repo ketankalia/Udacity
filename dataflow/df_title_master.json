@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_sqlser_nyc_payroll_title_md",
+						"referenceName": "ds_sqlser_nyc_payroll_titlemd",
 						"type": "DatasetReference"
 					},
 					"name": "sink1"
