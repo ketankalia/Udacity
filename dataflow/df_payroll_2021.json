@@ -74,6 +74,7 @@
 				"     insertable:true,",
 				"     updateable:false,",
 				"     upsertable:false,",
+				"     truncate:true,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
@@ -81,7 +82,6 @@
 				"     mapColumn(",
 				"          FiscalYear,",
 				"          PayrollNumber,",
-				"          AgencyCode,",
 				"          AgencyName,",
 				"          EmployeeID,",
 				"          LastName,",
@@ -97,7 +97,8 @@
 				"          RegularGrossPaid,",
 				"          OTHours,",
 				"          TotalOTPaid,",
-				"          TotalOtherPay",
+				"          TotalOtherPay,",
+				"          AgencyCode",
 				"     )) ~> sink1"
 			]
 		}
