@@ -5,13 +5,13 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"server": "tcp:sqlser-ketan-k.database.windows.net,1433",
+			"server": "sqlser-ketan-k.database.windows.net",
 			"database": "db_nycpayroll",
 			"encrypt": "mandatory",
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
 			"userName": "sqladmin",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDQ3RjA1NTM1LUE5NzYtNEFCQS1BMDVDLTZGNEI3MjI1QTRDRV8wMTc5N2MyNS1jNjBkLTRkYTUtYTRkNC02ZGRkYmRlODcxNjMiDQp9"
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDQ3RjA1NTM1LUE5NzYtNEFCQS1BMDVDLTZGNEI3MjI1QTRDRV85NTFkYzgyNS01OTg4LTQzZTQtODA4NC1mZjU1N2NhMmQzODQiDQp9"
 		}
 	}
 }
