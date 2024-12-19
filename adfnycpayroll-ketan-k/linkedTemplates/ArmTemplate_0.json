@@ -7,22 +7,37 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adfnycpayroll-ketan-k"
 		},
-		"ls_sqlserver_nycpayroll_ketan_k_connectionString": {
+		"ls_sqlserver_nycpayroll_ketan_k_password": {
 			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ls_sqlserver_nycpayroll_ketan_k'"
+			"metadata": "Secure string for 'password' of 'ls_sqlserver_nycpayroll_ketan_k'"
 		},
 		"ls_storageac_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'ls_storageac'"
 		},
-		"ls_synapse_nycpayroll_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'ls_synapse_nycpayroll'",
-			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synapsenycpayroll-ketan-k-ondemand.sql.azuresynapse.net;Initial Catalog=udacity"
+		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "tcp:sqlser-ketan-k.database.windows.net,1433"
+		},
+		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "db_nycpayroll"
+		},
+		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sqladmin"
 		},
 		"ls_storageac_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://adlsnycpayrollketank.dfs.core.windows.net/"
+		},
+		"ls_synapse_nycpayroll_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "synapsenycpayroll-ketan-k-ondemand.sql.azuresynapse.net"
+		},
+		"ls_synapse_nycpayroll_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "udacity"
 		}
 	},
 	"variables": {
@@ -37,7 +52,16 @@
 				"annotations": [],
 				"type": "AzureSqlDatabase",
 				"typeProperties": {
-					"connectionString": "[parameters('ls_sqlserver_nycpayroll_ketan_k_connectionString')]"
+					"server": "[parameters('ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_server')]",
+					"database": "[parameters('ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('ls_sqlserver_nycpayroll_ketan_k_password')]"
+					}
 				}
 			},
 			"dependsOn": []
@@ -67,7 +91,11 @@
 				"annotations": [],
 				"type": "AzureSqlDW",
 				"typeProperties": {
-					"connectionString": "[parameters('ls_synapse_nycpayroll_connectionString')]"
+					"server": "[parameters('ls_synapse_nycpayroll_properties_typeProperties_server')]",
+					"database": "[parameters('ls_synapse_nycpayroll_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SystemAssignedManagedIdentity"
 				}
 			},
 			"dependsOn": []
@@ -815,7 +843,7 @@
 								"referenceName": "ds_sqlser_nyc_payroll_agency_md",
 								"type": "DatasetReference"
 							},
-							"name": "sink1"
+							"name": "snkDest"
 						}
 					],
 					"transformations": [],
@@ -840,7 +868,7 @@
 						"     format: 'table',",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+						"     errorHandlingOption: 'stopOnFirstError') ~> snkDest"
 					]
 				}
 			},

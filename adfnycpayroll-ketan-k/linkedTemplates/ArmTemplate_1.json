@@ -177,7 +177,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/pipeline_all')]",
+			"name": "[concat(parameters('factoryName'), '/pipeline_main')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -201,7 +201,7 @@
 								"parameters": {},
 								"datasetParameters": {
 									"source1": {},
-									"sink1": {}
+									"snkDest": {}
 								}
 							},
 							"staging": {},
@@ -209,7 +209,8 @@
 								"coreCount": 8,
 								"computeType": "General"
 							},
-							"traceLevel": "Fine"
+							"traceLevel": "Fine",
+							"runConcurrently": true
 						}
 					},
 					{
@@ -239,7 +240,8 @@
 								"coreCount": 8,
 								"computeType": "General"
 							},
-							"traceLevel": "Fine"
+							"traceLevel": "Fine",
+							"runConcurrently": true
 						}
 					},
 					{
@@ -269,7 +271,8 @@
 								"coreCount": 8,
 								"computeType": "General"
 							},
-							"traceLevel": "Fine"
+							"traceLevel": "Fine",
+							"runConcurrently": true
 						}
 					},
 					{
@@ -400,7 +403,10 @@
 								"referenceName": "df_sql_payroll2020_agg",
 								"type": "DataFlowReference",
 								"parameters": {
-									"dataflow_param_fiscalyear": "2020"
+									"dataflow_param_fiscalyear": {
+										"value": "@pipeline().globalParameters.dataflow_param_fiscalyear",
+										"type": "Expression"
+									}
 								},
 								"datasetParameters": {
 									"Payroll2020FromSql": {},
@@ -438,7 +444,7 @@
 				"pipelines": [
 					{
 						"pipelineReference": {
-							"referenceName": "pipeline_all",
+							"referenceName": "pipeline_main",
 							"type": "PipelineReference"
 						},
 						"parameters": {}
@@ -455,7 +461,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/pipeline_all')]"
+				"[concat(variables('factoryId'), '/pipelines/pipeline_main')]"
 			]
 		}
 	]

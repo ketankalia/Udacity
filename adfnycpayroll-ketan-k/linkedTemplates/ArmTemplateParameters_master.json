@@ -5,17 +5,29 @@
 		"factoryName": {
 			"value": "adfnycpayroll-ketan-k"
 		},
-		"ls_sqlserver_nycpayroll_ketan_k_connectionString": {
+		"ls_sqlserver_nycpayroll_ketan_k_password": {
 			"value": ""
 		},
 		"ls_storageac_accountKey": {
 			"value": ""
 		},
-		"ls_synapse_nycpayroll_connectionString": {
-			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=synapsenycpayroll-ketan-k-ondemand.sql.azuresynapse.net;Initial Catalog=udacity"
+		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_server": {
+			"value": "tcp:sqlser-ketan-k.database.windows.net,1433"
+		},
+		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_database": {
+			"value": "db_nycpayroll"
+		},
+		"ls_sqlserver_nycpayroll_ketan_k_properties_typeProperties_userName": {
+			"value": "sqladmin"
 		},
 		"ls_storageac_properties_typeProperties_url": {
 			"value": "https://adlsnycpayrollketank.dfs.core.windows.net/"
+		},
+		"ls_synapse_nycpayroll_properties_typeProperties_server": {
+			"value": "synapsenycpayroll-ketan-k-ondemand.sql.azuresynapse.net"
+		},
+		"ls_synapse_nycpayroll_properties_typeProperties_database": {
+			"value": "udacity"
 		},
 		"containerUri": {
 			"value": ""
