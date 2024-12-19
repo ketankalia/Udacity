@@ -15,7 +15,7 @@
 			"sinks": [
 				{
 					"dataset": {
-						"referenceName": "ds_sqlser_nyc_payroll_agency_md",
+						"referenceName": "ds_sqlser_nyc_payroll_agencymd",
 						"type": "DatasetReference"
 					},
 					"name": "snkDest"
@@ -40,6 +40,7 @@
 				"     insertable:true,",
 				"     updateable:false,",
 				"     upsertable:false,",
+				"     truncate:true,",
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
