@@ -204,11 +204,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"dataflow_param_fiscalyear": {
-				"type": "int"
-			}
-		},
 		"annotations": [],
 		"lastPublishTime": "2024-12-15T16:08:46Z"
 	},
