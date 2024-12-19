@@ -1,5 +1,5 @@
 {
-	"name": "dsstoragestaging",
+	"name": "dsstorage_staging",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_storageac",
