@@ -110,7 +110,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_payroll2020",
+						"referenceName": "df_payroll_2020",
 						"type": "DataFlowReference"
 					},
 					"compute": {
