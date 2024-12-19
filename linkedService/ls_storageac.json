@@ -1,0 +1,12 @@
+{
+	"name": "ls_storageac",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureBlobFS",
+		"typeProperties": {
+			"url": "https://adlsnycpayrollketank.dfs.core.windows.net/",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDQ3RjA1NTM1LUE5NzYtNEFCQS1BMDVDLTZGNEI3MjI1QTRDRV8zMTA4ZGY5My0yMjdhLTQ0ZDEtOTFlOC1iZTQ1ZGUxYjIwN2IiDQp9"
+		}
+	}
+}
