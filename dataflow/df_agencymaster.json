@@ -18,7 +18,7 @@
 						"referenceName": "ds_sqlser_nyc_payroll_agency_md",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "snkDest"
 				}
 			],
 			"transformations": [],
@@ -43,7 +43,7 @@
 				"     format: 'table',",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     errorHandlingOption: 'stopOnFirstError') ~> sink1"
+				"     errorHandlingOption: 'stopOnFirstError') ~> snkDest"
 			]
 		}
 	}
