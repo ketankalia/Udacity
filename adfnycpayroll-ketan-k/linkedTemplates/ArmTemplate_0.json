@@ -101,7 +101,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_agencymaster')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_agency_master')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -139,7 +139,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_empmaster')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_emp_master')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -181,7 +181,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll_2020')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll2020')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -213,7 +213,7 @@
 						"type": "String"
 					},
 					{
-						"name": "AgencyCode",
+						"name": "AgencyID",
 						"type": "String"
 					},
 					{
@@ -287,7 +287,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll_2021')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_nycpayroll2021')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -393,7 +393,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_file_storage_titlemaster')]",
+			"name": "[concat(parameters('factoryName'), '/ds_file_storage_title_master')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -431,7 +431,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_agency_md')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_agencymd')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -461,7 +461,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_data_2020')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_data2020')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -567,7 +567,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_data_2021')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_data2021')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -673,7 +673,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_emp_md')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_empmd')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -707,7 +707,37 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_summary')]",
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_titlemd')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "ls_sqlserver_nycpayroll_ketan_k",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "TitleCode",
+						"type": "varchar"
+					},
+					{
+						"name": "TitleDescription",
+						"type": "varchar"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "NYC_Payroll_TITLE_MD"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/ls_sqlserver_nycpayroll_ketan_k')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payrollsummary')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -743,36 +773,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ds_sqlser_nyc_payroll_title_md')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "ls_sqlserver_nycpayroll_ketan_k",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "TitleCode",
-						"type": "varchar"
-					},
-					{
-						"name": "TitleDescription",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "NYC_Payroll_TITLE_MD"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/ls_sqlserver_nycpayroll_ketan_k')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/ds_syn_NYC_Payroll_Summary2')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -794,7 +794,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/dsstoragestaging')]",
+			"name": "[concat(parameters('factoryName'), '/dsstorage_staging')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -822,7 +822,7 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/df_agencymaster')]",
+			"name": "[concat(parameters('factoryName'), '/df_agency_master')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -831,7 +831,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_agencymaster",
+								"referenceName": "ds_file_storage_agency_master",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -840,7 +840,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_nyc_payroll_agency_md",
+								"referenceName": "ds_sqlser_nyc_payroll_agencymd",
 								"type": "DatasetReference"
 							},
 							"name": "snkDest"
@@ -865,6 +865,7 @@
 						"     insertable:true,",
 						"     updateable:false,",
 						"     upsertable:false,",
+						"     truncate:true,",
 						"     format: 'table',",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
@@ -873,12 +874,12 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_agencymaster')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_agency_md')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_agency_master')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_agencymd')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/df_employeemaster')]",
+			"name": "[concat(parameters('factoryName'), '/df_employee_master')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -887,7 +888,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_empmaster",
+								"referenceName": "ds_file_storage_emp_master",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -896,7 +897,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_nyc_payroll_emp_md",
+								"referenceName": "ds_sqlser_nyc_payroll_empmd",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -931,12 +932,12 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_empmaster')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_emp_md')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_emp_master')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_empmd')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/df_payroll2020')]",
+			"name": "[concat(parameters('factoryName'), '/df_payroll_2020')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -945,7 +946,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_nycpayroll_2020",
+								"referenceName": "ds_file_storage_nycpayroll2020",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -954,7 +955,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_nyc_payroll_data_2020",
+								"referenceName": "ds_sqlser_nyc_payroll_data2020",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -965,7 +966,7 @@
 						"source(output(",
 						"          FiscalYear as string,",
 						"          PayrollNumber as string,",
-						"          AgencyCode as string,",
+						"          AgencyID as string,",
 						"          AgencyName as string,",
 						"          EmployeeID as string,",
 						"          LastName as string,",
@@ -1021,12 +1022,12 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll_2020')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_data_2020')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll2020')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_data2020')]"
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/df_payroll2021')]",
+			"name": "[concat(parameters('factoryName'), '/df_payroll_2021')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -1035,7 +1036,7 @@
 					"sources": [
 						{
 							"dataset": {
-								"referenceName": "ds_file_storage_nycpayroll_2021",
+								"referenceName": "ds_file_storage_nycpayroll2021",
 								"type": "DatasetReference"
 							},
 							"name": "source1"
@@ -1044,7 +1045,7 @@
 					"sinks": [
 						{
 							"dataset": {
-								"referenceName": "ds_sqlser_nyc_payroll_data_2021",
+								"referenceName": "ds_sqlser_nyc_payroll_data2021",
 								"type": "DatasetReference"
 							},
 							"name": "sink1"
@@ -1111,8 +1112,8 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll_2021')]",
-				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_data_2021')]"
+				"[concat(variables('factoryId'), '/datasets/ds_file_storage_nycpayroll2021')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sqlser_nyc_payroll_data2021')]"
 			]
 		}
 	]
