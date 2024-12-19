@@ -10,6 +10,13 @@
 						"type": "DatasetReference"
 					},
 					"name": "Payroll2020FromSql"
+				},
+				{
+					"dataset": {
+						"referenceName": "ds_sqlser_nyc_payroll_data2021",
+						"type": "DatasetReference"
+					},
+					"name": "Payroll2021FromSql"
 				}
 			],
 			"sinks": [
@@ -71,7 +78,32 @@
 				"     validateSchema: false,",
 				"     isolationLevel: 'READ_UNCOMMITTED',",
 				"     format: 'table') ~> Payroll2020FromSql",
-				"Payroll2020FromSql union(byName: true)~> PayrollDataCombined",
+				"source(output(",
+				"          FiscalYear as integer,",
+				"          PayrollNumber as integer,",
+				"          AgencyCode as string,",
+				"          AgencyName as string,",
+				"          EmployeeID as string,",
+				"          LastName as string,",
+				"          FirstName as string,",
+				"          AgencyStartDate as date,",
+				"          WorkLocationBorough as string,",
+				"          TitleCode as string,",
+				"          TitleDescription as string,",
+				"          LeaveStatusasofJune30 as string,",
+				"          BaseSalary as double,",
+				"          PayBasis as string,",
+				"          RegularHours as double,",
+				"          RegularGrossPaid as double,",
+				"          OTHours as double,",
+				"          TotalOTPaid as double,",
+				"          TotalOtherPay as double",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     isolationLevel: 'READ_UNCOMMITTED',",
+				"     format: 'table') ~> Payroll2021FromSql",
+				"Payroll2020FromSql, Payroll2021FromSql union(byName: true)~> PayrollDataCombined",
 				"PayrollDataCombined filter(toInteger(FiscalYear) >= $dataflow_param_fiscalyear) ~> filter1",
 				"filter1 derive(TotalPaid = RegularGrossPaid + TotalOTPaid+TotalOtherPay) ~> derivedColumnTotalPaid",
 				"derivedColumnTotalPaid aggregate(groupBy(AgencyName,",
