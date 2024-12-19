@@ -153,7 +153,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_payroll2021",
+						"referenceName": "df_payroll_2021",
 						"type": "DataFlowReference"
 					},
 					"compute": {
