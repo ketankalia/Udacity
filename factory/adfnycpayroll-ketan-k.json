@@ -1,21 +1,9 @@
 {
 	"name": "adfnycpayroll-ketan-k",
-	"properties": {
-		"globalParameters": {
-			"dataflow_param_fiscalyear": {
-				"type": "object",
-				"value": "2020"
-			}
-		},
-		"globalConfigurations": {
-			"factoryStagingLSReferenceName": "ls_storageac",
-			"factoryStagingLSType": "LinkedServiceReference"
-		}
-	},
 	"location": "eastus",
 	"identity": {
 		"type": "SystemAssigned",
-		"principalId": "7a0d2c13-a215-422e-8f8a-9bb918eb330f",
+		"principalId": "cea2f91d-b193-4acb-b6a1-cd9c1f4cbeaa",
 		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
 	}
 }
