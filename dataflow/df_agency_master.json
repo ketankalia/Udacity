@@ -1,5 +1,5 @@
 {
-	"name": "df_agencymaster",
+	"name": "df_agency_master",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
