@@ -138,7 +138,12 @@
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true,",
-				"     saveOrder: 1) ~> StorageStagingSink"
+				"     saveOrder: 1,",
+				"     mapColumn(",
+				"          AgencyName,",
+				"          FiscalYear,",
+				"          aggTotalPaid",
+				"     )) ~> StorageStagingSink"
 			]
 		}
 	}
