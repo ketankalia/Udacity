@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "ds_file_storage_empmaster",
+						"referenceName": "ds_file_storage_emp_master",
 						"type": "DatasetReference"
 					},
 					"name": "source1"
