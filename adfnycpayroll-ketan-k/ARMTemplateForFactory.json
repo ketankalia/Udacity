@@ -231,8 +231,7 @@
 								"datasetParameters": {
 									"source1": {},
 									"sink1": {}
-								},
-								"linkedServiceParameters": {}
+								}
 							},
 							"staging": {},
 							"compute": {
@@ -1597,7 +1596,12 @@
 						"     postCommands: [],",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true,",
-						"     saveOrder: 1) ~> StorageStagingSink"
+						"     saveOrder: 1,",
+						"     mapColumn(",
+						"          AgencyName,",
+						"          FiscalYear,",
+						"          aggTotalPaid",
+						"     )) ~> StorageStagingSink"
 					]
 				}
 			},
