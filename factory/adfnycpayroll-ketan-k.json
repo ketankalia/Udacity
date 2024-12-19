@@ -1,0 +1,9 @@
+{
+	"name": "adfnycpayroll-ketan-k",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cea2f91d-b193-4acb-b6a1-cd9c1f4cbeaa",
+		"tenantId": "f958e84a-92b8-439f-a62d-4f45996b6d07"
+	}
+}
