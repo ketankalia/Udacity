@@ -1,5 +1,5 @@
 {
-	"name": "df_titlemaster",
+	"name": "df_title_master",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

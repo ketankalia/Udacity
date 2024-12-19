@@ -41,7 +41,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "df_titlemaster",
+						"referenceName": "df_title_master",
 						"type": "DataFlowReference"
 					},
 					"compute": {
