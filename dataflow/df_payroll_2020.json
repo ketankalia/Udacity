@@ -26,7 +26,7 @@
 				"source(output(",
 				"          FiscalYear as string,",
 				"          PayrollNumber as string,",
-				"          AgencyCode as string,",
+				"          AgencyID as string,",
 				"          AgencyName as string,",
 				"          EmployeeID as string,",
 				"          LastName as string,",

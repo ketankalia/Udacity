@@ -29,7 +29,7 @@
 				"type": "String"
 			},
 			{
-				"name": "AgencyCode",
+				"name": "AgencyID",
 				"type": "String"
 			},
 			{
