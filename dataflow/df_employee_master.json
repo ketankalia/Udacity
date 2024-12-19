@@ -1,5 +1,5 @@
 {
-	"name": "df_employeemaster",
+	"name": "df_employee_master",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
