@@ -1,5 +1,5 @@
 {
-	"name": "ds_file_storage_titlemaster",
+	"name": "ds_file_storage_title_master",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ls_storageac",
